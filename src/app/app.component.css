@@ -1,0 +1,21 @@
+.slider {
+    height: 300px;
+}
+
+body {
+    font-family: 'Roboto';
+}
+.carousel .carousel-inner{
+height:300px
+}
+.carousel-inner .carousel-item img{
+min-height:200px;
+object-fit:cover;
+height: 300px;
+}
+
+@media(max-width:768px){
+.carousel .carousel-inner{
+height:auto
+ }
+}

@@ -1,0 +1,97 @@
+<div class="wrapper-home mt-5">
+    <h3 class="mb-3 font-wight-bold">Productos Destacados</h3>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let product of productsTopFive | async">
+            <div class="card w-100 mb-5" style="width: 18rem;">
+                <img style="height: 208px" [src]="product.image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                    <div class="d-flex flex-row">
+                        <div class="flex-fill">
+                            <a class="btn btn-primary" (click)="addProductCart(product)"><i class="fa fa-shopping-cart"></i> Añadir al carrito</a>
+                        </div>
+                        <div class="flex-fill">
+                            <i class="fa fa-star star-active"></i>
+                            <i class="fa fa-star star-active"></i>
+                            <i class="fa fa-star star-active"></i>
+                            <i class="fa fa-star star-active"></i>
+                            <i class="fa fa-star star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 class="mb-3 font-weight-bold">Listado de Productos</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex w-100 justify-content-end mb-5">
+                <div class="p-2">
+                    <select name="" id="" class="form-control" (change)="productFilter($event)">
+                        <option value="0">Todos</option>
+                        <option *ngFor="let option of  filterOptions" [value]="option">{{option}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Product List -->
+        <div class="col-md-4" *ngFor="let product of products | async">
+            <div class="card w-100 mb-5" style="width: 18rem;">
+                <img style="height: 208px" [src]="product.image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                    <div class="d-flex flex-row">
+                        <div class="flex-fill">
+                            <a class="btn btn-primary" (click)="addProductCart(product)"><i class="fa fa-shopping-cart"></i> Añadir al carrito</a>
+                        </div>
+                        <div class="flex-fill">
+                            <i class="fa fa-star star-active"></i>
+                            <i class="fa fa-star star-active"></i>
+                            <i class="fa fa-star star-active"></i>
+                            <i class="fa fa-star star-active"></i>
+                            <i class="fa fa-star star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Shopping Cart -->
+    <h3 class="mb-3 font-weight-bold">Carrito de Compra</h3>
+    <ng-container *ngIf="(showProductCart | async); else list">
+        <h4>No hay Productos</h4>
+    </ng-container>
+    <ng-template #list>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsible">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of productsCart | async; index as i">
+                                <td>{{product.id}}</td>
+                                <td>{{product.name}}</td>
+                                <td>{{product.description}}</td>
+                                <th>
+                                    <span class="badge badge-danger" (click)="deleteProductCart(i)"><i class="fa fa-trash"></i> Eliminar</span>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>
+

@@ -1,0 +1,19 @@
+.card {
+    box-shadow: 0px 6px 8px -4px rgba(0,0,0,0.75);
+}
+
+.card-body {
+    background-color: #FCF9F9;
+}
+
+.star-active {
+    color: rgb(255,215,0);
+}
+
+.star {
+    color: lightgray;
+}
+
+p {
+    font-family: 'Roboto';
+}
